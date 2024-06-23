@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./book-slider.css";
+import Rating from "./Rating";
 const BookSlider = ({data}) =>{
 
     const [slideIndex, setSlideIndex] = useState(0);
@@ -19,7 +20,7 @@ const BookSlider = ({data}) =>{
                     <h2 className="book-slide-item-title">
                         {item.title}
                     </h2>
-                    <div className="rating">Rating</div>
+                    <Rating rating={item.rating} reviews={item.reviews} />
                     <div className="book-slide-item-price">${item.price}</div>
                     <div className="book-slider-icons-wrapper">
                         <i className="bi bi-eye-fill"></i>
