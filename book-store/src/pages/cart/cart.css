@@ -51,7 +51,11 @@
 .cart-item-quantity button{
     cursor: pointer;
     padding: 5px;
-    font-size: 17px;      
+    font-size: 17px; 
+    background-color: #222821;
+    color: white;
+    border: none;
+    border-radius: 4px;
 }
 .cart-item-quantity b{
     font-size: 24px;
