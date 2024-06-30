@@ -1,6 +1,6 @@
 
-const CartItem = ({item}) => {
-    const{image,title,author,quantity,price} = item;
+const CartItem = ({item,addToCart,removeFromCart}) => {
+    const{image,title,author,quantity,price,id} = item;
     return (
         <div className="cart-item">
         <img src={`/books/${image}`} alt={title} className="cart-item-img" />
@@ -15,18 +15,20 @@ const CartItem = ({item}) => {
             </div>
             <div>
             <div className="cart-item-quantity">
-                <button>
+                <button onClick={() => addToCart({...item,quantity: item.quantity +1})}>
                     <i className="i bi bi-plus-lg"></i>
                 </button>
                 <b>{quantity}</b>
-                <button>
+                {quantity >= 1 && 
+                <button onClick={() => addToCart({...item,quantity: item.quantity -1})}>
                     <i className="i bi bi-dash-lg"></i>
                 </button>
+                }
             </div>
             <div className="cart-items-price">
-                ${price * quantity}
+                ${(price * quantity).toFixed(2)}
             </div>
-            <i className="bi bi-trash-fill"></i>
+            <i onClick={() => removeFromCart(id)} className="bi bi-trash-fill"></i>
             </div>
         </div>
     </div>

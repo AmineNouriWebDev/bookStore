@@ -1,10 +1,19 @@
 import {useParams} from "react-router-dom";
 import Rating from "../../components/book-slider/Rating";
+import CartContext from "../../context/cartContext";
 import { books } from"../../data/books";
+import { useContext } from "react";
 import "./book.css";
+import { useState } from "react";
 const Book = () => {
+
+    const { addToCart } = useContext(CartContext)
+
+
     const {id} = useParams();
     const book = books.find(b=> b.id === +id); // +id equal parseInt(id)
+
+    const [qty, setQty] = useState(1);
     return (
         <div className="book">
             <div className="book-content">
@@ -16,8 +25,8 @@ const Book = () => {
                     </div>
                     <Rating rating={book.rating} reviews={book.reviews} />
                     <div className="book-add-to-cart">
-                        <input type="number" min="1" max="100" className="book-add-to-cart-input" />
-                        <button className="book-add-to-cart-btn">
+                        <input type="number" min="1" max="100" className="book-add-to-cart-input" value={qty} onChange={e => setQty(e.target.value) } />
+                        <button onClick={()=> addToCart({...book, quantity: qty})} className="book-add-to-cart-btn">
                             <i className="bi bi-cart-plus"></i>
                             Add To Cart
                         </button>
