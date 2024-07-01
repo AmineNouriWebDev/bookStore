@@ -16,6 +16,7 @@
     display: flex;
     flex-direction: column;
     width: 340px;
+    position: relative;
 }
 .form input{
     border : 2px solid teal;
@@ -43,4 +44,12 @@
     font-size: 17px;
     font-weight: 600;
 }
-.form-link{}
+.show-password-icon{
+    position: absolute;
+    top: 80px;
+    right: 10px;
+    font-size: 21px;
+    color: rgb(104, 192, 192);
+    z-index: 2;
+    cursor: pointer;
+}
